@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Guido",
+    "lastName": "Yacob",
+    "dni": "43247700",
+    "email": "yacobguido2001@gmail.com",
+    "matricula": "27cdG",
+    "fechaMatriculacion": "15/04/2023",
+    "materia": [
+      {
+        "materia": "Matematica",
+        "nota": "8"
+      },
+      {
+        "materia": "Biologia",
+        "nota": "4"
+      },
+      {
+        "materia": "Historia",
+        "nota": "3"
+      }
+    ]
+  },
+  {
+    "name": "Florencia",
+    "lastName": "Bellusci",
+    "dni": "65412398",
+    "email": "mail01@gmail.com",
+    "matricula": "56arC",
+    "fechaMatriculacion": "18/04/2023",
+    "materia": [
+      {
+        "materia": "Quimica",
+        "nota": "8"
+      },
+      {
+        "materia": "Matematica",
+        "nota": "10"
+      },
+      {
+        "materia": "Lengua",
+        "nota": "4"
+      }
+    ]
+  },
+  {
+    "name": "Sofia",
+    "lastName": "Cepeda",
+    "dni": "99329763",
+    "email": "mail02@gmail.com",
+    "matricula": "35thP",
+    "fechaMatriculacion": "20/4/2023",
+    "materia": [
+      {
+        "materia": "Historia",
+        "nota": "6"
+      },
+      {
+        "materia": "Biologia",
+        "nota": "7"
+      },
+      {
+        "materia": "Lengua",
+        "nota": "4"
+      }
+    ]
+  },
+  {
+    "name": "Valentin",
+    "lastName": "Fuentes",
+    "dni": "26783248",
+    "email": "mail03@gmail.com",
+    "matricula": "56yrQ",
+    "fechaMatriculacion": "21/4/2023",
+    "materia": [
+      {
+        "materia": "Lengua",
+        "nota": "9"
+      },
+      {
+        "materia": "Historia",
+        "nota": "7"
+      },
+      {
+        "materia": "Matematica",
+        "nota": "3"
+      }
+    ]
+  } 
+]

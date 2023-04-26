@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Matias",
+    "lastName": "Coronel",
+    "dni": "12345678",
+    "email": "Mati@gmail.com",
+    "materia": "Lengua",
+    "contrato": {
+      "startingDate": "17/2/2020, 20:30:00",
+      "expiringDate": "16/2/2024, 10:00:00"
+    }
+  },
+  {
+    "name": "Romina",
+    "lastName": "Alfonsin",
+    "dni": "62345664",
+    "email": "Romi@gmail.com",
+    "materia": "Historia",
+    "contrato": {
+      "startingDate": "28/12/2022, 11:00:00",
+      "expiringDate": "27/12/2028, 11:00:00"
+    }
+  },
+  {
+    "name": "Damian",
+    "lastName": "Ramirez",
+    "dni": "54312680",
+    "email": "Dami@gmail.com",
+    "materia": "Matematica",
+    "contrato": {
+      "startingDate": "15/9/2021, 09:50:00",
+      "expiringDate": "30/3/2031, 00:00:00"
+    }
+  },
+  {
+    "name": "Rodolfo",
+    "lastName": "Gonzalez",
+    "dni": "873284341",
+    "email": "Rodo@gmail.com",
+    "materia": "Quimica",
+    "contrato": {
+      "startingDate": "15/2/2023, 20:00:00",
+      "expiringDate": "30/3/2025, 07:00:00"
+    }
+  },
+  {
+    "name": "Fermin",
+    "lastName": "Fernandez",
+    "dni": "128934687",
+    "email": "fer@gmail.com",
+    "materia": "Biologia",
+    "contrato": {
+      "startingDate": "11/2/2019, 08:00:00",
+      "expiringDate": "30/4/2023, 17:00:00"
+    }
+  }
+]
