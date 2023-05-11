@@ -12,9 +12,9 @@ const students = JSON.parse(fs.readFileSync(alumnosJSON, 'utf-8'));
 const teachers = JSON.parse(fs.readFileSync(profesoresJSON, 'utf-8'));
 
 export class Gestor{
-    private perosona: Persona[] = [];
-    public constructor(perosona: Persona[]){
-        this.perosona = perosona;
+    private persona: Persona[] = [];
+    public constructor(persona: Persona[]){
+        this.persona = persona;
     }
     setAlumno(){
         const name = readLineSync.question("Nombre del alumno: ").toLowerCase();
@@ -40,24 +40,25 @@ export class Gestor{
         const dni = readLineSync.question("DNI: ");
         const email = readLineSync.question("Email: ")
         const materia = readLineSync.question("Materia: ")
-        const startingDate = readLineSync.question("Fecha de inicio(yyyy/mm/dd): ");
-        const expiringDate = readLineSync.question("Fecha de expiración(yyyy/mm/dd: ");
-        const contrato = new Contrato(startingDate, expiringDate)
-        const profesor = new Profesor(name, lastName, dni, email, materia, contrato);
+        const profesor = new Profesor(name, lastName, dni, email, materia,);
+        for(let i=0; i< 1; i++){
+            const startingDate = readLineSync.question("Fecha de inicio(yyyy/mm/dd): ");
+            const expiringDate = readLineSync.question("Fecha de expiración(yyyy/mm/dd: ");
+            const contrato = new Contrato(startingDate, expiringDate);
+            profesor.setContrato(contrato);
+        }
         teachers.push(profesor);
         fs.writeFileSync(profesoresJSON, JSON.stringify(teachers, null, 2), 'utf-8');
     }
     getMateriasAlumno(lastName: string): any[] {
         const alumnoEncontrado = students.find((alumno: any) => alumno.lastName === lastName);
-        if (alumnoEncontrado) {   
-            console.log(alumnoEncontrado.materia)        
+        if (alumnoEncontrado) {           
             return alumnoEncontrado.materia;
         } else {
             console.log("No se encontró ningún alumno con ese apellido.");
             return [];
         }
     }
-
     getPromedioAlumno(lastName: string): number {
         const alumnoEncontrado = students.find((alumno: any) => alumno.lastName === lastName);
         if (alumnoEncontrado) {
@@ -72,7 +73,6 @@ export class Gestor{
             return 0;
         }
     }
-
     getAlumno(lastName:string): any[]{
         const alumnoEncontrado = students.find((alumno: any) => alumno.lastName === lastName);
         if(alumnoEncontrado){
@@ -82,7 +82,7 @@ export class Gestor{
             const email = alumnoEncontrado.email;
             const matricula = alumnoEncontrado.matricula;
             const fechaMatriculacion = alumnoEncontrado.fechaMatriculacion.toLocaleString();
-            console.log(`nombre: ${name}\napellido: ${lastName}\n$nro de documento: ${dni}\n$email: ${email}\nmatricula: ${matricula}\nfecha de matriculación: ${fechaMatriculacion}`);
+            console.log(`Alumno: ${name} ${lastName}\ndni: ${dni}\nemail: ${email}\nmatricula: ${matricula}\nfecha de matriculación: ${fechaMatriculacion}`);
             const materias = this.getMateriasAlumno(alumnoEncontrado.lastName);
             for(let i = 0; i < materias.length; i++){
                 console.log(`Materia ${i + 1}: ${materias[i].materia} Nota: ${materias[i].nota}`)
@@ -96,12 +96,22 @@ export class Gestor{
             return [];
         }
     }
+    getAllAlumnos(){
+        for (let i = 0; i < students.length; i++) {
+            const alumno = students[i];
+            const materias = this.getMateriasAlumno(alumno.lastName);
+            console.log(`Alumno: ${alumno.name} ${alumno.lastName}\n dni: ${alumno.dni}\n email: ${alumno.email}\n matricula: ${alumno.matricula}\n fechaMatriculacion: ${alumno.fechaMatriculacion}`)
+            for(let i = 0; i < materias.length; i++){
+                console.log(`Materia ${i + 1}: ${materias[i].materia}\n Nota: ${materias[i].nota}\n `)
+                }
+        }
+    }
 
     getPromedioAlumnos() {
         for (let i = 0; i < students.length; i++) {
             const alumno = students[i];
-            console.log(`Alumno: ${alumno.name} ${alumno.lastName}`);
             const materias = this.getMateriasAlumno(alumno.lastName);
+            console.log(`Alumno: ${alumno.name} ${alumno.lastName}`);
             for(let i = 0; i < materias.length; i++){
                 console.log(`Materia ${i + 1}: ${materias[i].materia} Nota: ${materias[i].nota}`)
                 }
@@ -118,7 +128,7 @@ export class Gestor{
     public getProfesoresPorAlumno(lastName: string): void {
         const alumnoEncontrado = students.find((alumno: any) => alumno.lastName === lastName);
         if (!alumnoEncontrado) {
-            console.log("No se encontró ningún alumno con ese nombre");
+            console.log("No se encontró ningún alumno con ese Apellido");
             return;
         }
         const profesoresDelAlumno: string[] = [];
@@ -136,25 +146,53 @@ export class Gestor{
         if (profesoresDelAlumno.length === 0) {
             console.log("El alumno no tiene profesores asignados");
             return;
-        }        
+        }       
+        const Name = alumnoEncontrado.name; 
         console.log(
-            `Los profesores del alumno con nombre ${lastName} son: ${profesoresDelAlumno.join(
+            `Los profesores del alumno/a ${Name} ${lastName} son: ${profesoresDelAlumno.join(
             ", "
             )}`
         );
     }
+    getContratoProfesor(lastName :string):any{
+        const profesorEncontrado = teachers.find((profesor: any) => profesor.lastName === lastName);
+        if (profesorEncontrado){
+            
+            return profesorEncontrado.contrato;
 
-    getProfesor(profesor: string) {
-        const profesorEncontrado = teachers.find((profesor: any) => profesor === profesor);
-        console.log(profesorEncontrado);
-        return profesorEncontrado
+        }
+        else {
+            console.log("No se encontró ningún profesor con ese apellido.");
+            return [];
+        }
     }
 
-    getProfesores() {
-        console.log(teachers);
-        return teachers
+    getProfesor(lastName: string): any{
+        const profesorEncontrado = teachers.find((Profesor: any) => Profesor.lastName === lastName);
+        if(profesorEncontrado){
+            const contrato = this.getContratoProfesor(profesorEncontrado.lastName);
+            console.log(`profesor: ${profesorEncontrado.name} ${profesorEncontrado.lastName}\n dni: ${profesorEncontrado.dni}\n email: ${profesorEncontrado.email}\n materia: ${profesorEncontrado.materia}`)
+            for(let i = 0; i < contrato.length; i++){
+                console.log(`contrato:\n "startingDate": ${contrato[i].startingDate}\n "expiringDate": ${contrato[i].expiringDate} \n`) 
+            }
         
-    }
+        }else{
+           console.log("No se encontró ningún profesor con ese apellido.");
+           return [];
+        }
+    
+        }
+    
+    getProfesores() {
+        for (let i = 0; i < teachers.length; i++) {
+            const Profesor = teachers[i];
+            const Contrato = this.getContratoProfesor(Profesor.lastName);
+            console.log(`profesor: ${Profesor.name} ${Profesor.lastName}\n dni: ${Profesor.dni}\n email: ${Profesor.email}\n materia: ${Profesor.materia}`)
+            for(let i = 0; i < Contrato.length; i++){
+                console.log(`contrato:\n "startingDate": ${Contrato[i].startingDate}\n "expiringDate": ${Contrato[i].expiringDate} \n`)
+            } 
+        }
+    } 
     
     getAlumnosPorProfesor(lastName: string): any[] {
         const alumnosPorProfesor: any = [];
@@ -167,7 +205,8 @@ export class Gestor{
                     alumnosPorProfesor.push( `${ alumno.name} ${alumno.lastName}`);
                 }
             }
-            console.log(`el profesor ${lastName} tiene como alumnos a: ${alumnosPorProfesor.join(",")}`);
+            const Name = profesorEncontrado.name
+            console.log(`el profesor/a ${Name} ${lastName} tiene como alumnos a: ${alumnosPorProfesor.join(",")}`);
             return alumnosPorProfesor;
         } else {
             console.log("No se encontró ningún profesor con ese apellido.");
@@ -187,4 +226,3 @@ export function getPeople() {
         return [];
     }
 }
-
