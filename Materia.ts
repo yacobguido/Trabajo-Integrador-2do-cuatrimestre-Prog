@@ -7,16 +7,4 @@ export class Materia{
         this.nota = nota;
     }
 
-    public getMaterias(): Materia{
-        return this;
-    }
-
-    
-
-    public toJson(){
-        return {
-            materia: this.materia,
-            nota: this.nota
-        }
-    }
 }
