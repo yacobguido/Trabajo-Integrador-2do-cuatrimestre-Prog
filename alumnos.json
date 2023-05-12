@@ -88,46 +88,68 @@
     ]
   },
   {
-    "name": "guillermo",
-    "lastName": "vargas",
+    "name": "Guillermo",
+    "lastName": "Vargas",
     "dni": "3454345",
     "email": "email@gmail.com",
     "matricula": "43adh",
     "fechaMatriculacion": "2020-03-04T03:00:00.000Z",
     "materia": [
       {
-        "materia": "biologia",
+        "materia": "Biologia",
         "nota": "8"
       },
       {
-        "materia": "quimica",
+        "materia": "Quimica",
         "nota": "4"
       },
       {
-        "materia": "matematica",
+        "materia": "Matematica",
         "nota": "6"
       }
     ]
   },
   {
-    "name": "ruben",
-    "lastName": "almeira",
+    "name": "Ruben",
+    "lastName": "Almeira",
     "dni": "8382834",
     "email": "ruben@gmail.com",
     "matricula": "214hdsf",
     "fechaMatriculacion": "2022-04-12T03:00:00.000Z",
     "materia": [
       {
-        "materia": "biologia",
+        "materia": "Biologia",
         "nota": "7"
       },
       {
-        "materia": "matematica",
+        "materia": "Matematica",
         "nota": "6"
       },
       {
-        "materia": "quimica",
+        "materia": "Quimica",
         "nota": "2"
+      }
+    ]
+  },
+  {
+    "name": "Mateo",
+    "lastName": "Ruiz",
+    "dni": "737434",
+    "email": "Mate@gmail.com",
+    "matricula": "433gddf",
+    "fechaMatriculacion": "2022-09-09T03:00:00.000Z",
+    "materia": [
+      {
+        "materia": "Ingles",
+        "nota": "5"
+      },
+      {
+        "materia": "Biologia",
+        "nota": "8"
+      },
+      {
+        "materia": "Matematica",
+        "nota": "7"
       }
     ]
   }
