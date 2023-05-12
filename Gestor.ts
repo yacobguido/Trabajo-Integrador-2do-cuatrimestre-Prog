@@ -17,8 +17,8 @@ export class Gestor{
         this.persona = persona;
     }
     setAlumno(){
-        const name = readLineSync.question("Nombre del alumno: ").toLowerCase();
-        const lastName = readLineSync.question("Apellido del Alumno: ").toLowerCase();
+        const name = readLineSync.question("Nombre del alumno: ");
+        const lastName = readLineSync.question("Apellido del Alumno: ");
         const dni = readLineSync.question("DNI: ");
         const email = readLineSync.question("Email: ")
         const matricula = readLineSync.question("matricula: ");
@@ -26,7 +26,7 @@ export class Gestor{
         const estudiante = new Alumno(name, lastName, dni, email, matricula, fechaMatriculacion,);
 
         for (let i = 0; i < 3; i++) {
-            const materiaNombre = readLineSync.question(`Ingrese el nombre de la materia ${i + 1}: `).toLowerCase();
+            const materiaNombre = readLineSync.question(`Ingrese el nombre de la materia ${i + 1}: `);
             const notaMateria = readLineSync.question(`Nota de la materia ${i + 1}: `);
             const materia = new Materia(materiaNombre, notaMateria);
             estudiante.setMateria(materia);
@@ -35,8 +35,8 @@ export class Gestor{
         fs.writeFileSync(alumnosJSON, JSON.stringify(students, null, 2), 'utf-8');
     }
     setProfesor(){
-        const name = readLineSync.question("Nombre del profesor: ").toLowerCase();
-        const lastName = readLineSync.question("Apellido del Profesor: ").toLowerCase();
+        const name = readLineSync.question("Nombre del profesor: ");
+        const lastName = readLineSync.question("Apellido del Profesor: ");
         const dni = readLineSync.question("DNI: ");
         const email = readLineSync.question("Email: ")
         const materia = readLineSync.question("Materia: ")
@@ -194,7 +194,7 @@ export class Gestor{
         }
     } 
     
-    getAlumnosPorProfesor(lastName: string): any[] {
+    public getAlumnosPorProfesor(lastName: string): any {
         const alumnosPorProfesor: any = [];
         const profesorEncontrado = teachers.find((profesor: any) => profesor.lastName === lastName);
         if (profesorEncontrado) {
@@ -226,3 +226,4 @@ export function getPeople() {
         return [];
     }
 }
+
